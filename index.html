@@ -17,25 +17,31 @@
     />
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body>
+  <body class="menu-page">
+    <video
+      class="bg-video"
+      src="imgs/interface/cards.mp4"
+      autoplay
+      muted
+      loop
+      playsinline
+      aria-hidden="true"
+    ></video>
+    <div class="bg-video-overlay" aria-hidden="true"></div>
+
     <div class="ambient ambient-one"></div>
     <div class="ambient ambient-two"></div>
 
     <main class="app-shell">
       <header class="topbar">
-        <a
-          class="brand"
-          href="#"
-          data-screen="menu"
-          aria-label="Voltar ao menu"
-        >
+        <a class="brand" href="index.html" aria-label="Voltar ao menu">
           <span class="brand-mark">✦</span
           ><span>CRÔNICAS DE <b>ELDORIA</b></span>
         </a>
         <span class="topbar-caption">◆ ARQUIVOS DA GUILDA ◆</span>
       </header>
 
-      <section id="menu-screen" class="screen menu-screen active">
+      <section class="screen menu-screen active">
         <div class="hero-emblem" aria-hidden="true"><span>⚔</span></div>
         <p class="eyebrow">UM DESAFIO DE MEMÓRIA</p>
         <h1>Crônicas de <span>Eldoria</span></h1>
@@ -44,129 +50,27 @@
           guilda.
         </p>
         <nav class="menu-actions" aria-label="Menu principal">
-          <button class="menu-button primary" data-action="start">
+          <a class="menu-button primary" href="pages/jogo.html">
             <span>⚔</span> Começar aventura
-          </button>
-          <button class="menu-button" data-screen="info">
+          </a>
+          <a class="menu-button" href="pages/personagens.html">
             <span>♜</span> Personagens
-          </button>
-          <button class="menu-button" data-screen="settings">
+          </a>
+          <a class="menu-button" href="pages/history.html">
+            <span>📜</span> Histórico
+          </a>
+          <a class="menu-button" href="pages/configuracoes.html">
             <span>⚙</span> Configurações
-          </button>
+          </a>
         </nav>
         <div class="menu-footer">
           <span>✧</span> A memória é sua maior arma <span>✧</span>
         </div>
       </section>
 
-      <section id="info-screen" class="screen content-screen">
-        <button class="back-button" data-screen="menu">← Voltar ao menu</button>
-        <p class="eyebrow">COMPÊNDIO DA GUILDA</p>
-        <h2>Heróis de <span>Eldoria</span></h2>
-        <p class="section-description">
-          Estes são os personagens que você encontrará durante a aventura.
-        </p>
-        <div id="character-list" class="character-list"></div>
-      </section>
-
-      <section id="settings-screen" class="screen content-screen">
-        <button class="back-button" data-screen="menu">← Voltar ao menu</button>
-        <p class="eyebrow">AJUSTES DA AVENTURA</p>
-        <h2>Configurações</h2>
-        <div class="settings-panel">
-          <label class="setting-row"
-            ><span
-              ><b>Dificuldade</b
-              ><small>Quantidade de pares na partida</small></span
-            >
-            <select id="difficulty-select">
-              <option value="easy">Aprendiz · 4 pares</option>
-              <option value="normal" selected>Aventureiro · 6 pares</option>
-              <option value="hard">Lenda · 8 pares</option>
-            </select>
-          </label>
-          <label class="setting-row"
-            ><span
-              ><b>Efeitos sonoros</b
-              ><small>Controle visual preparado para áudio futuro</small></span
-            >
-            <input id="sound-toggle" type="checkbox" checked />
-          </label>
-          <p class="settings-note">
-            As configurações são aplicadas na próxima partida. O jogo funciona
-            sem arquivos de áudio externos.
-          </p>
-        </div>
-      </section>
-
-      <section id="game-screen" class="screen game-screen">
-        <div class="game-heading">
-          <div>
-            <p class="eyebrow">DESAFIO DA GUILDA</p>
-            <h2>Encontre os <span>pares</span></h2>
-          </div>
-          <button class="back-button" data-action="quit">
-            ✕ Sair da partida
-          </button>
-        </div>
-        <div class="game-stats">
-          <div class="stat">
-            <span class="stat-icon">◷</span>
-            <div>
-              <small>TEMPO</small><strong id="timer-display">00:00</strong>
-            </div>
-          </div>
-          <div class="stat">
-            <span class="stat-icon">⚔</span>
-            <div>
-              <small>MOVIMENTOS</small><strong id="moves-display">0</strong>
-            </div>
-          </div>
-          <div class="stat">
-            <span class="stat-icon">✦</span>
-            <div>
-              <small>PARES</small><strong id="pairs-display">0 / 6</strong>
-            </div>
-          </div>
-        </div>
-        <div
-          id="game-board"
-          class="game-board"
-          aria-label="Tabuleiro do jogo da memória"
-        ></div>
-        <p class="game-hint">
-          Encontre dois personagens iguais para formar um par.
-        </p>
-      </section>
-
-      <section id="victory-screen" class="screen victory-screen">
-        <div class="victory-seal">✦</div>
-        <p class="eyebrow">MISSÃO CONCLUÍDA</p>
-        <h2>Vitória, <span>aventureiro!</span></h2>
-        <p class="victory-copy">
-          Todos os heróis foram reunidos. A guilda reconhece sua conquista.
-        </p>
-        <div class="victory-stats">
-          <div>
-            <small>TEMPO TOTAL</small><strong id="final-time">00:00</strong>
-          </div>
-          <div>
-            <small>MOVIMENTOS</small><strong id="final-moves">0</strong>
-          </div>
-        </div>
-        <div class="victory-actions">
-          <button class="menu-button primary" data-action="restart">
-            ↻ Jogar novamente
-          </button>
-          <button class="menu-button" data-screen="menu">
-            ⌂ Voltar ao menu
-          </button>
-        </div>
-      </section>
       <footer class="site-footer">
         FEITO PARA AVENTUREIROS • ELDORIA © 2026
       </footer>
     </main>
-    <script type="module" src="js/main.js"></script>
   </body>
 </html>
