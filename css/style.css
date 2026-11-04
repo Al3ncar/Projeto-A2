@@ -1,4 +1,3 @@
-/* Estilos do projeto. */
 @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap");
 
 :root {
@@ -110,18 +109,25 @@ body:before {
 .screen {
   display: none;
   flex: 1;
-  /* margin: 44px 0 55px; */
+  margin: 44px 0 55px;
   position: relative;
 }
 
-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  object-fit: cover;
+.bg-video {
+  position: fixed;
+  inset: 0;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  pointer-events: none;
+}
+.bg-video-overlay {
+  position: fixed;
+  inset: 0;
   z-index: -1;
-  filter: brightness(0.7);
+  pointer-events: none;
+  background: linear-gradient(to bottom, #17130fb3, #17130f80 45%, #17130fcc);
 }
 
 .screen.active {
@@ -156,6 +162,7 @@ video {
   margin: 5px auto 38px;
   background: linear-gradient(135deg, #392819, #1c1712);
   box-shadow: 0 0 35px #c08d3c22;
+  opacity: 50%;
 }
 .hero-emblem span {
   transform: rotate(-45deg);
@@ -217,6 +224,11 @@ h2 {
   transition: 0.2s;
   box-shadow: 0 4px 0 #100d0a;
 }
+a.menu-button {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
 .menu-button span {
   color: var(--gold);
   margin-right: 9px;
@@ -264,7 +276,11 @@ h2 {
     monospace;
   padding: 9px 13px;
   cursor: pointer;
-  margin-bottom: 35px;
+  margin: 20px 0 35px 0;
+}
+a.back-button {
+  display: inline-block;
+  text-decoration: none;
 }
 .back-button:hover {
   color: var(--gold);
@@ -528,6 +544,101 @@ h2 {
   gap: 10px;
   width: min(100%, 280px);
 }
+.history-panel {
+  border: 1px solid var(--line);
+  background: #251e17;
+  padding: 18px 22px 8px;
+}
+.history-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+.history-toolbar .back-button {
+  margin: 0;
+}
+.history-summary {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--muted);
+}
+.back-button.danger:hover:not(:disabled) {
+  color: #d98b7a;
+  border-color: #d98b7a;
+}
+.back-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.history-empty {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.9;
+  text-align: center;
+  padding: 40px 10px 46px;
+}
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.history-table th {
+  text-align: left;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0 10px 12px;
+  border-bottom: 1px solid var(--line);
+}
+.history-table td {
+  padding: 14px 10px;
+  border-bottom: 1px solid #4a3927;
+}
+.history-table td:first-child {
+  color: var(--gold);
+}
+.history-table td:nth-child(2) {
+  color: var(--gold-light);
+  font-weight: 700;
+}
+.history-table tbody tr:hover {
+  background: #2b2118;
+}
+.history-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+.confirm-dialog {
+  margin: auto;
+  width: min(100% - 32px, 400px);
+  padding: 28px;
+  text-align: center;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--gold);
+  outline: 5px double #9d774544;
+  box-shadow: var(--shadow);
+}
+.confirm-dialog::backdrop {
+  background: #0009;
+}
+.confirm-dialog h3 {
+  font:
+    400 28px "MedievalSharp",
+    serif;
+  margin: 8px 0 10px;
+}
+.confirm-dialog .section-description {
+  margin: 0 auto 22px;
+}
+.confirm-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
 @media (max-width: 600px) {
   .app-shell {
     width: min(100% - 22px, 1000px);
@@ -599,6 +710,23 @@ h2 {
   .setting-row select {
     max-width: 100%;
     width: 100%;
+  }
+  .history-panel {
+    padding: 14px 12px 4px;
+  }
+  .history-toolbar {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+  .history-table {
+    font-size: 10px;
+  }
+  .history-table th {
+    font-size: 8px;
+    padding: 0 6px 10px;
+  }
+  .history-table td {
+    padding: 11px 6px;
   }
 }
 @media (max-width: 370px) {
