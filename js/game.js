@@ -1,4 +1,4 @@
-import { getCharacters } from "./characters.js";
+import { getCharacters, getImageUrl } from "./characters.js";
 import { startTimer, stopTimer, resetTimer } from "./timer.js";
 import { registerMatch } from "./history.js";
 
@@ -42,7 +42,7 @@ const createCard = (character, index) => {
   front.className = "card-face card-front";
 
   const image = document.createElement("img");
-  image.src = character.image;
+  image.src = getImageUrl(character);
   image.alt = character.name;
   image.onerror = () => {
     image.remove();
